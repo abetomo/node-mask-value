@@ -1,0 +1,62 @@
+{
+  "name": "mask-value",
+  "version": "1.0.0",
+  "description": "Mask the value of the object.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "standardx **/*.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abetomo/node-mask-value.git"
+  },
+  "keywords": [
+    "object"
+  ],
+  "author": "abetomo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abetomo/node-mask-value/issues"
+  },
+  "homepage": "https://github.com/abetomo/node-mask-value#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "eslint-plugin-jest": "^23.17.1",
+    "jest": "^26.1.0",
+    "standardx": "^5.0.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/tests/*.test.(ts|tsx|js)"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "jest/globals": true
+    },
+    "plugins": ["jest"],
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint/eslint-plugin"]
+  }
+}
