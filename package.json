@@ -1,11 +1,20 @@
 {
-  "name": "mask-value",
+  "name": "@abetomo/mask-value",
   "version": "1.0.0",
   "description": "Mask the value of the object.",
-  "main": "index.js",
+  "main": "./dist/mask.js",
+  "types": "./types/mask.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "types",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "standardx **/*.ts",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "repository": {
@@ -13,6 +22,7 @@
     "url": "git+https://github.com/abetomo/node-mask-value.git"
   },
   "keywords": [
+    "mask",
     "object"
   ],
   "author": "abetomo",
@@ -58,5 +68,8 @@
   "standardx": {
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint/eslint-plugin"]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

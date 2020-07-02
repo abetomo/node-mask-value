@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./types",
     "esModuleInterop": true,
     "lib": ["es2020"],
+    "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./dist",
     "strict": true,
