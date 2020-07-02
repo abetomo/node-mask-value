@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "standardx **/*.ts",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "repository": {
