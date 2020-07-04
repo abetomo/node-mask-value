@@ -1,4 +1,7 @@
 # node-mask-value
+
+[![npm version](https://badge.fury.io/js/%40abetomo%2Fmask-value.svg)](https://badge.fury.io/js/%40abetomo%2Fmask-value)
+
 Mask the value of the object.
 
 ## Install
