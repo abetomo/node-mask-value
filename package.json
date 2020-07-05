@@ -59,7 +59,9 @@
     "env": {
       "jest/globals": true
     },
-    "plugins": ["jest"],
+    "plugins": [
+      "jest"
+    ],
     "rules": {
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "error"
@@ -67,7 +69,9 @@
   },
   "standardx": {
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint/eslint-plugin"]
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
   },
   "publishConfig": {
     "access": "public"
