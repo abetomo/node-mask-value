@@ -26,6 +26,10 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
   }
 
   if (bracketsIndex === 0) {
+    if (!Array.isArray(data)) {
+      return data
+    }
+
     if (pathNames.length === 1) {
       for (let i = 0; i < data.length; i++) {
         data[i] = action(data[i])
@@ -42,6 +46,10 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
   if (data[key] === undefined) {
     return data
   }
+  if (!Array.isArray(data[key])) {
+    return data
+  }
+
   if (pathNames.length === 1) {
     for (let i = 0; i < data[key].length; i++) {
       data[key][i] = action(data[key][i])

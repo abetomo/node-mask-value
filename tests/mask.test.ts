@@ -133,16 +133,43 @@ describe('masks', () => {
     })
   })
 
-  test('data is null', () => {
-    expect(masks(null, [{ path: '', action: () => {} }])).toBeNull()
-  })
+  describe('Illegal values.', () => {
+    test('data is null', () => {
+      expect(masks(null, [{ path: '', action: () => {} }])).toBeNull()
+    })
 
-  test('path is empty', () => {
-    expect(masks(
-      { a: 1 },
-      [{ path: '', action: () => {} }])
-    )
-      .toEqual({ a: 1 })
+    test('path is empty', () => {
+      expect(masks(
+        { a: 1 },
+        [{ path: '', action: () => {} }])
+      )
+        .toEqual({ a: 1 })
+    })
+
+    test('Illegal path', () => {
+      const data = {
+        key: 'hoge',
+        items: 'not array',
+        obj: {}
+      }
+
+      const config = [
+        {
+          path: '.[]',
+          action: () => 'test'
+        },
+        {
+          path: '.items[]',
+          action: () => 'test'
+        },
+        {
+          path: '.obj[]',
+          action: () => 'test'
+        }
+      ]
+      expect(masks(data, config))
+        .toEqual(data)
+    })
   })
 })
 
