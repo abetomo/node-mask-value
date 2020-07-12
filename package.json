@@ -1,6 +1,6 @@
 {
   "name": "@abetomo/mask-value",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mask the value of the object.",
   "main": "./dist/mask.js",
   "types": "./types/mask.d.ts",
