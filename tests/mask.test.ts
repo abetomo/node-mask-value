@@ -1,4 +1,4 @@
-import { masks } from '../src/mask'
+import { masks, mask } from '../src/mask'
 
 // wip
 
@@ -175,4 +175,66 @@ describe('masks', () => {
 
 describe('mask', () => {
   // TODO
+
+  describe('simple', () => {
+    test('object', () => {
+      const data = {
+        key: 'value'
+      }
+      const config = {
+        path: '.key',
+        action: () => 'hoge'
+      }
+      expect(mask(data, config))
+        .toEqual({
+          key: 'hoge'
+        })
+    })
+
+    test('array', () => {
+      const data = [1, 2, 3]
+      const config = {
+        path: '.[]',
+        action: (n: number) => n * 2
+      }
+      expect(mask(data, config))
+        .toEqual([2, 4, 6])
+    })
+
+    test('object with array', () => {
+      const data = {
+        items: [
+          { key: 'value1' },
+          { key: 'value2' }
+        ]
+      }
+      const config = {
+        path: '.items[].key',
+        action: (v: string) => v + 'hoge'
+      }
+      expect(mask(data, config))
+        .toEqual({
+          items: [
+            { key: 'value1hoge' },
+            { key: 'value2hoge' }
+          ]
+        })
+    })
+
+    test('array with object', () => {
+      const data = [
+        { key: 'value1' },
+        { key: 'value2' }
+      ]
+      const config = {
+        path: '.[].key',
+        action: (v: string) => v + 'hoge'
+      }
+      expect(mask(data, config))
+        .toEqual([
+          { key: 'value1hoge' },
+          { key: 'value2hoge' }
+        ])
+    })
+  })
 })
