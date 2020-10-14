@@ -1,6 +1,7 @@
 # node-mask-value
 
 [![npm version](https://badge.fury.io/js/%40abetomo%2Fmask-value.svg)](https://badge.fury.io/js/%40abetomo%2Fmask-value)
+![Test](https://github.com/abetomo/node-mask-value/workflows/Test/badge.svg)
 
 Mask the value of the object.
 
