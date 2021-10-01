@@ -43,7 +43,10 @@ Output:
 
 
 const configs = [
-  config,
+  {
+    path: '.[].name',
+    action: () => Math.random()
+  },
   {
     path: '.[].address',
     action: (s: string) => s.length * Math.random()
