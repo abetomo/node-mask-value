@@ -3,7 +3,20 @@ export interface Config {
   action: Function
 }
 
-function maskMain (data: any, pathNames: string[], action: Function): any {
+function maskMainForArray<T, U extends keyof T> (data: T[], pathNames: U[], action: Function): T[] {
+  if (pathNames.length === 1) {
+    for (let i = 0; i < data.length; i++) {
+      data[i] = action(data[i])
+    }
+    return data
+  }
+  for (let i = 0; i < data.length; i++) {
+    data[i] = maskMain(data[i], pathNames.slice(1), action)
+  }
+  return data
+}
+
+function maskMain<T, U extends keyof T> (data: T, pathNames: U[], action: Function): T {
   if (data == null) {
     return data
   }
@@ -11,7 +24,7 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
     return data
   }
 
-  const bracketsIndex = pathNames[0].indexOf('[]')
+  const bracketsIndex = (pathNames[0] as string).indexOf('[]')
   if (bracketsIndex < 0) {
     const key = pathNames[0]
     if (data[key] === undefined) {
@@ -21,7 +34,11 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
       data[key] = action(data[key])
       return data
     }
-    data[key] = maskMain(data[key], pathNames.slice(1), action)
+    data[key] = maskMain(
+      data[key] as T[U],
+      pathNames.slice(1) as unknown as (keyof T[U])[],
+      action
+    )
     return data
   }
 
@@ -42,7 +59,7 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
     return data
   }
 
-  const key = pathNames[0].slice(0, bracketsIndex)
+  const key = (pathNames[0] as string).slice(0, bracketsIndex) as U
   if (data[key] === undefined) {
     return data
   }
@@ -50,23 +67,23 @@ function maskMain (data: any, pathNames: string[], action: Function): any {
     return data
   }
 
-  if (pathNames.length === 1) {
-    for (let i = 0; i < data[key].length; i++) {
-      data[key][i] = action(data[key][i])
-    }
-    return data
-  }
-  for (let i = 0; i < data[key].length; i++) {
-    data[key][i] = maskMain(data[key][i], pathNames.slice(1), action)
-  }
+  data[key] = maskMainForArray(
+    data[key] as unknown as T[U][],
+    pathNames as unknown as (keyof T[U])[],
+    action
+  ) as unknown as T[U]
   return data
 }
 
-export function mask (data: any, config: Config): any {
-  return maskMain(data, config.path.split('.').slice(1), config.action)
+export function mask<T> (data: T, config: Config): T {
+  return maskMain(
+    data,
+    config.path.split('.').slice(1) as(keyof T)[],
+    config.action
+  )
 }
 
-export function masks (data: any, configList: Config[]): any {
+export function masks<T> (data: T, configList: Config[]): T {
   for (const config of configList) {
     data = mask(data, config)
   }
