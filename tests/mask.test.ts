@@ -1,4 +1,4 @@
-import { masks, mask } from '../src/mask'
+import { masks, mask, Config } from '../src/mask'
 
 // wip
 
@@ -8,7 +8,7 @@ describe('masks', () => {
       const data = {
         key: 'value'
       }
-      const config = [
+      const config: Config[] = [
         {
           path: '.key',
           action: () => 'hoge'
@@ -22,7 +22,7 @@ describe('masks', () => {
 
     test('array', () => {
       const data = [1, 2, 3]
-      const config = [
+      const config: Config[] = [
         {
           path: '.[]',
           action: (n: number) => n * 2
@@ -39,7 +39,7 @@ describe('masks', () => {
           { key: 'value2' }
         ]
       }
-      const config = [
+      const config: Config[] = [
         {
           path: '.items[].key',
           action: (v: string) => v + 'hoge'
@@ -59,7 +59,7 @@ describe('masks', () => {
         { key: 'value1' },
         { key: 'value2' }
       ]
-      const config = [
+      const config: Config[] = [
         {
           path: '.[].key',
           action: (v: string) => v + 'hoge'
@@ -93,7 +93,7 @@ describe('masks', () => {
           h2: 'title2'
         }
       }
-      const config = [
+      const config: Config[] = [
         {
           path: '.BBB[].key',
           action: (v: string) => v + 'BBB'
@@ -153,7 +153,7 @@ describe('masks', () => {
         obj: {}
       }
 
-      const config = [
+      const config: Config[] = [
         {
           path: '.[]',
           action: () => 'test'
@@ -181,7 +181,7 @@ describe('mask', () => {
       const data = {
         key: 'value'
       }
-      const config = {
+      const config: Config = {
         path: '.key',
         action: () => 'hoge'
       }
@@ -193,7 +193,7 @@ describe('mask', () => {
 
     test('array', () => {
       const data = [1, 2, 3]
-      const config = {
+      const config: Config = {
         path: '.[]',
         action: (n: number) => n * 2
       }
@@ -208,7 +208,7 @@ describe('mask', () => {
           { key: 'value2' }
         ]
       }
-      const config = {
+      const config: Config = {
         path: '.items[].key',
         action: (v: string) => v + 'hoge'
       }
@@ -226,7 +226,7 @@ describe('mask', () => {
         { key: 'value1' },
         { key: 'value2' }
       ]
-      const config = {
+      const config: Config = {
         path: '.[].key',
         action: (v: string) => v + 'hoge'
       }
