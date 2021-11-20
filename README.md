@@ -14,9 +14,14 @@ Mask the value of the object.
 ## Examples
 
 ```typescript
-import { mask, masks } from '@abetomo/mask-value'
+import { mask, masks, Config } from '@abetomo/mask-value'
 
-const data = [
+type User = {
+  name: string
+  address: string
+}
+
+const data: User[] = [
   {
     name: 'name1',
     address: 'address1'
@@ -27,12 +32,12 @@ const data = [
   }
 ]
 
-const config = {
+const config: Config = {
   path: '.[].name',
   action: () => Math.random()
 }
 
-console.log(mask(data, config))
+console.log(mask<User[]>(data, config))
 /*
 Output:
 [
@@ -42,7 +47,7 @@ Output:
 */
 
 
-const configs = [
+const configs: Config[] = [
   {
     path: '.[].name',
     action: () => Math.random()
@@ -53,7 +58,7 @@ const configs = [
   }
 ]
 
-console.log(masks(data, configs))
+console.log(masks<User[]>(data, configs))
 /*
 Output:
 [
