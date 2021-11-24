@@ -46,17 +46,7 @@ function maskMain<T, U extends keyof T> (data: T, pathNames: U[], action: Functi
     if (!Array.isArray(data)) {
       return data
     }
-
-    if (pathNames.length === 1) {
-      for (let i = 0; i < data.length; i++) {
-        data[i] = action(data[i])
-      }
-    } else {
-      for (let i = 0; i < data.length; i++) {
-        data[i] = maskMain(data[i], pathNames.slice(1), action)
-      }
-    }
-    return data
+    return maskMainForArray(data, pathNames, action) as unknown as T
   }
 
   const key = (pathNames[0] as string).slice(0, bracketsIndex) as U
