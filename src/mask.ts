@@ -5,15 +5,10 @@ export interface Config {
 
 function maskMainForArray<T, U extends keyof T> (data: T[], pathNames: U[], action: Function): T[] {
   if (pathNames.length === 1) {
-    for (let i = 0; i < data.length; i++) {
-      data[i] = action(data[i])
-    }
-    return data
+    return data.map((v) => action(v))
   }
-  for (let i = 0; i < data.length; i++) {
-    data[i] = maskMain(data[i], pathNames.slice(1), action)
-  }
-  return data
+  const paths = pathNames.slice(1)
+  return data.map((v) => maskMain(v, paths, action))
 }
 
 function maskMain<T, U extends keyof T> (data: T, pathNames: U[], action: Function): T {
