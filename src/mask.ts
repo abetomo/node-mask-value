@@ -45,9 +45,6 @@ function maskMain<T, U extends keyof T> (data: T, pathNames: U[], action: Functi
   }
 
   const key = (pathNames[0] as string).slice(0, bracketsIndex) as U
-  if (data[key] === undefined) {
-    return data
-  }
   if (!Array.isArray(data[key])) {
     return data
   }
