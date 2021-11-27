@@ -12,6 +12,7 @@
     "package.json"
   ],
   "scripts": {
+    "benchmark": "npx ts-node tests/mask.benchmark.ts",
     "build": "tsc",
     "lint": "standardx **/*.ts",
     "prepublishOnly": "npm run build",
