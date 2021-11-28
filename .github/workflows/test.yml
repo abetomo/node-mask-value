@@ -19,4 +19,4 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm test
-    - run: npx ts-node tests/mask.benchmark.ts
+    - run: npm run benchmark
