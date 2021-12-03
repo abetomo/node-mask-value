@@ -6,8 +6,7 @@ on:
     - 'v*'
 
 jobs:
-  publish:
-    name: npm publish
+  release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -23,16 +22,5 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
-  release:
-    runs-on: ubuntu-latest
-    steps:
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
+      uses: softprops/action-gh-release@v1
