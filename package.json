@@ -34,9 +34,9 @@
   "homepage": "https://github.com/abetomo/node-mask-value#readme",
   "devDependencies": {
     "@types/jest": "^28.1.7",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
-    "eslint-plugin-jest": "^27.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint-plugin-jest": "^27.1.6",
     "jest": "^28.1.0",
     "standardx": "^7.0.0",
     "ts-jest": "^28.0.2",
