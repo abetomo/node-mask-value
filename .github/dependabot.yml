@@ -10,3 +10,12 @@ updates:
     directory: "/"
     schedule:
         interval: "weekly"
+    groups:
+      eslint:
+        patterns:
+          - "@eslint-community/*"
+          - "@eslint/*"
+          - "@types/eslint*"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "typescript-eslint*"
