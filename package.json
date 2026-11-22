@@ -14,7 +14,7 @@
   "scripts": {
     "benchmark": "npx ts-node tests/mask.benchmark.ts",
     "build": "tsc",
-    "lint": "standardx \"**/*.ts\"",
+    "lint": "eslint \"**/*.ts\"",
     "prepublishOnly": "npm run build",
     "test": "jest"
   },
@@ -34,11 +34,17 @@
   "homepage": "https://github.com/abetomo/node-mask-value#readme",
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.73.0",
     "@typescript-eslint/parser": "^8.51.0",
-    "eslint-plugin-jest": "^28.2.0",
+    "eslint": "8.57.1",
+    "eslint-config-standard": "17.1.0",
+    "eslint-config-standard-jsx": "11.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jest": "^29.17.1",
+    "eslint-plugin-n": "15.7.0",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.36.1",
     "jest": "^30.0.4",
-    "standardx": "^7.0.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.2.2"
   },
@@ -57,22 +63,22 @@
     ]
   },
   "eslintConfig": {
+    "extends": [
+      "standard",
+      "standard-jsx"
+    ],
     "env": {
       "jest/globals": true
     },
+    "parser": "@typescript-eslint/parser",
     "plugins": [
+      "@typescript-eslint",
       "jest"
     ],
     "rules": {
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "error"
     }
-  },
-  "standardx": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint/eslint-plugin"
-    ]
   },
   "publishConfig": {
     "access": "public"
